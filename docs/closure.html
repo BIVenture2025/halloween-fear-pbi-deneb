@@ -181,7 +181,7 @@
 <header>
   <h1>Project 28 — Closure Analysis</h1>
   <p class="sub">“Fear changes costume” · Microsoft Fabric Community Halloween Data Visualization Contest 2026 · one portrait page · provided dataset only (105 respondents)</p>
-  <p class="meta">4 sessions · 2026-10-14 → 2026-10-17 · submitted 2026-10-17 00:47 MYT (deadline 22 Oct 15:00) · compiled at closure (Skill 10) · every figure re-derived on the day</p>
+  <p class="meta">4 sessions + 1 publishing · 2026-10-14 → 2026-10-17 · submitted 2026-10-17 00:47 MYT (deadline 22 Oct 15:00) · compiled at closure (Skill 10) · every figure re-derived on the day</p>
   <p class="meta status-now">Submitted. <b>Version C</b>, a blend of two earlier built versions, is the entry; A and B are kept as backup .pbix files. The submitted .pbix was opened and read: 1 page, 5 visuals, Deneb embedded.</p>
 </header>
 
@@ -193,6 +193,7 @@
   <button role="tab" aria-selected="false" data-t="verify">Verification</button>
   <button role="tab" aria-selected="false" data-t="cost">Cost</button>
   <button role="tab" aria-selected="false" data-t="next">Next time</button>
+  <button role="tab" aria-selected="false" data-t="c9">Retrospective</button>
 </nav>
 
 <!-- OUTCOME -->
@@ -254,6 +255,29 @@
 <tr><td>4</td><td>Dedupe cost captures on content windows</td><td>tool fixed</td></tr>
 <tr><td>5</td><td>Show competing directions moving, side by side, before building either</td><td>Skill 0 recommendation</td></tr>
 </tbody></table><p class="lead">Owner, in one line: the “no overlap / big enough” demand produced the harness; closing Desktop with Don't save every time kept eight placements collision-free; the cost was two unplanned versions, worth it for the entry.</p>
+</section>
+
+<!-- RETROSPECTIVE -->
+<section id="c9" hidden>
+<h2 class="sec">Retrospective (C9) — accepted 2026-10-17; Session 5 observed, S1–S4 reconstructed</h2><table>
+<thead><tr><th>Metric</th><th>Value</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Validator errors, first pass (build)</td><td>not recorded; earliest recorded 2 (S3), both starter-owned — 0 attributable to P28 generators</td><td>handovers S3/S4</td></tr>
+<tr><td>Publish gates, first pass (S5)</td><td>scrub 0 BLOCK · rebuild check ALL PRESENT but hollow (0 artefacts read — tool fixed) · validate_pbip 1 (starter) · deck 0 · guide 0</td><td>observed</td></tr>
+<tr><td>Fix rounds</td><td>A 3 · B build + 3 · C 1 + 1 · repo 0 · guide 1 · deck 2 · card image 3 · P27 redaction 2</td><td>C1 + observed</td></tr>
+<tr><td>Sessions vs plan</td><td>4 planned to submission, 4 used; +1 publishing (S5)</td><td>C2 + observed</td></tr>
+<tr><td>Regressions this session introduced</td><td>3, all caught in-session, 0 public: parser false FAIL; .pyc written into a gated tree; stale device writes</td><td>observed</td></tr>
+<tr><td>Cost (floor)</td><td>≥ 4.0 h · ≥ 1,140 turns · 389,988 cache-read/turn (S1 missing, S4 partial)</td><td>_cost merge 2026-10-17</td></tr>
+</tbody></table><div class="caveat">Six of thirteen findings had one shape: a tool, or me, giving a verdict on something not actually examined. The most valuable act of the publishing session was re-running a widened check over old work: it found a live leak in Project 27's public repo (workspace name + model id), now redacted and confirmed by clone.</div><table>
+<thead><tr><th>#</th><th>Change</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Install the Claude GitHub App on BIVenture2025 so sessions can push</td><td>owner decision</td></tr>
+<tr><td>2</td><td>Read every device write back (size + sha1) before reporting it</td><td>SETTLED rule; session_close prints evidence</td></tr>
+<tr><td>3</td><td>Never run a check inside a gated tree</td><td>guide §163g</td></tr>
+<tr><td>4</td><td>Widen a check, then re-run it over everything it has passed</td><td>App C 65</td></tr>
+<tr><td>5</td><td>Name and request the session's folders in its first tool call</td><td>kickoff format</td></tr>
+<tr><td>6</td><td>Card shape from the site's same-kind entries, not the last project</td><td>Skill 9 amendment</td></tr>
+</tbody></table>
 </section>
 
 <footer>Project 28 · closure compiled 2026-10-17 · data: provided survey dataset, unmodified · glyphs are original drawings</footer>
