@@ -1,0 +1,300 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "C2_Graveyard",
+  "position": {
+    "x": 0,
+    "y": 390,
+    "z": 2000,
+    "height": 690,
+    "width": 1357,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "Fear"
+                }
+              },
+              "queryRef": "DimFear.Fear",
+              "nativeQueryRef": "Fear"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "FearShort"
+                }
+              },
+              "queryRef": "DimFear.FearShort",
+              "nativeQueryRef": "FearShort"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "DimFear.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Childhood"
+                }
+              },
+              "queryRef": "_Measures.People Childhood",
+              "nativeQueryRef": "People Childhood"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Adult"
+                }
+              },
+              "queryRef": "_Measures.People Adult",
+              "nativeQueryRef": "People Adult"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Kept"
+                }
+              },
+              "queryRef": "_Measures.People Kept",
+              "nativeQueryRef": "People Kept"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.0.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n \"$schema\": \"https://vega.github.io/schema/vega/v5.json\",\n \"description\": \"P28 C / V2 graveyard: every fear as a headstone (nobody holds it now), a candle (still held) or a ghost (new since childhood). Lantern = Halloween''s own category.\",\n \"width\": 1357,\n \"height\": 690,\n \"padding\": 0,\n \"autosize\": \"none\",\n \"signals\": [\n  {\n   \"name\": \"t0\",\n   \"init\": \"now()\"\n  },\n  {\n   \"name\": \"clock\",\n   \"init\": \"0\",\n   \"on\": [\n    {\n     \"events\": {\n      \"type\": \"timer\",\n      \"throttle\": 40\n     },\n     \"update\": \"min(now() - t0, 4600)\"\n    }\n   ]\n  },\n  {\n   \"name\": \"t\",\n   \"update\": \"min(1, clock / 4500)\"\n  },\n  {\n   \"name\": \"nD0\",\n   \"update\": \"length(data(''deadT0''))\"\n  },\n  {\n   \"name\": \"nD1\",\n   \"update\": \"length(data(''deadT1''))\"\n  },\n  {\n   \"name\": \"nD\",\n   \"update\": \"length(data(''deadAll''))\"\n  },\n  {\n   \"name\": \"nA0\",\n   \"update\": \"length(data(''aliveT0''))\"\n  },\n  {\n   \"name\": \"nA1\",\n   \"update\": \"length(data(''aliveT1''))\"\n  },\n  {\n   \"name\": \"nA2\",\n   \"update\": \"length(data(''aliveT2''))\"\n  },\n  {\n   \"name\": \"nA\",\n   \"update\": \"length(data(''aliveAll''))\"\n  },\n  {\n   \"name\": \"nB\",\n   \"update\": \"length(data(''bornAll''))\"\n  },\n  {\n   \"name\": \"nHal\",\n   \"update\": \"length(data(''halBig''))\"\n  },\n  {\n   \"name\": \"dEnd0\",\n   \"update\": \"40 + nD0 * 32\"\n  },\n  {\n   \"name\": \"dEnd\",\n   \"update\": \"dEnd0 + 8 + nD1 * 12\"\n  },\n  {\n   \"name\": \"C0\",\n   \"update\": \"dEnd + 20\"\n  },\n  {\n   \"name\": \"cEnd0\",\n   \"update\": \"C0 + nA0 * 29\"\n  },\n  {\n   \"name\": \"cEnd1\",\n   \"update\": \"cEnd0 + 8 + nA1 * 9\"\n  },\n  {\n   \"name\": \"cEnd\",\n   \"update\": \"cEnd1 + 8 + nA2 * 6\"\n  },\n  {\n   \"name\": \"B0\",\n   \"update\": \"cEnd + 20\"\n  },\n  {\n   \"name\": \"hov\",\n   \"value\": null,\n   \"on\": [\n    {\n     \"events\": \"@hit:mouseover\",\n     \"update\": \"datum\"\n    },\n    {\n     \"events\": \"@hit:mouseout\",\n     \"update\": \"null\"\n    }\n   ]\n  }\n ],\n \"data\": [\n  {\n   \"name\": \"dataset\"\n  },\n  {\n   \"name\": \"labels\",\n   \"values\": [\n    {\n     \"Fear\": \"Demons/the devil\",\n     \"label\": \"Demons\"\n    },\n    {\n     \"Fear\": \"Basements / Attics\",\n     \"label\": \"Basements\"\n    },\n    {\n     \"Fear\": \"Dolls/mannequins\",\n     \"label\": \"Dolls\"\n    },\n    {\n     \"Fear\": \"Doctors/hospitals\",\n     \"label\": \"Doctors\"\n    },\n    {\n     \"Fear\": \"Open/empty spaces\",\n     \"label\": \"Open spaces\"\n    },\n    {\n     \"Fear\": \"Thunderstorms/lightning\",\n     \"label\": \"Thunderstorms\"\n    },\n    {\n     \"Fear\": \"Death (your own or a loved one’s)\",\n     \"label\": \"Death\"\n    },\n    {\n     \"Fear\": \"Cancer or another serious diagnosis\",\n     \"label\": \"Serious diagnosis\"\n    },\n    {\n     \"Fear\": \"Financial insecurity/poverty\",\n     \"label\": \"Financial insecurity\"\n    },\n    {\n     \"Fear\": \"Uncertainty about the future\",\n     \"label\": \"Uncertain future\"\n    },\n    {\n     \"Fear\": \"Wasting one’s life/potential\",\n     \"label\": \"Wasting potential\"\n    },\n    {\n     \"Fear\": \"Being trapped / small spaces\",\n     \"label\": \"Being trapped\"\n    },\n    {\n     \"Fear\": \"Insects/bugs in general\",\n     \"label\": \"Insects\"\n    },\n    {\n     \"Fear\": \"Radioactivity/nuclear disaster\",\n     \"label\": \"Nuclear disaster\"\n    },\n    {\n     \"Fear\": \"Losing a limb or developing a disability\",\n     \"label\": \"Losing a limb\"\n    },\n    {\n     \"Fear\": \"Separation from friends or family\",\n     \"label\": \"Separation\"\n    },\n    {\n     \"Fear\": \"Not being good enough\",\n     \"label\": \"Not good enough\"\n    },\n    {\n     \"Fear\": \"The unknown/unfamiliar\",\n     \"label\": \"The unknown\"\n    },\n    {\n     \"Fear\": \"Monsters under the bed\",\n     \"label\": \"Monsters\"\n    },\n    {\n     \"Fear\": \"Natural disasters generally\",\n     \"label\": \"Natural disasters\"\n    },\n    {\n     \"Fear\": \"Getting sick/illness\",\n     \"label\": \"Getting sick\"\n    },\n    {\n     \"Fear\": \"Germs/contamination\",\n     \"label\": \"Germs\"\n    },\n    {\n     \"Fear\": \"Being alone / Loneliness\",\n     \"label\": \"Loneliness\"\n    },\n    {\n     \"Fear\": \"Conflict/confrontation\",\n     \"label\": \"Conflict\"\n    },\n    {\n     \"Fear\": \"Rats/mice\",\n     \"label\": \"Rats\"\n    },\n    {\n     \"Fear\": \"Bees/wasps\",\n     \"label\": \"Bees\"\n    },\n    {\n     \"Fear\": \"Needles/shots\",\n     \"label\": \"Needles\"\n    },\n    {\n     \"Fear\": \"Failing at work/school\",\n     \"label\": \"Failing at work\"\n    },\n    {\n     \"Fear\": \"Deep/open water\",\n     \"label\": \"Deep water\"\n    },\n    {\n     \"Fear\": \"Intruders/home invasion\",\n     \"label\": \"Intruders\"\n    },\n    {\n     \"Fear\": \"Divorce/breakup\",\n     \"label\": \"Divorce\"\n    },\n    {\n     \"Fear\": \"Something else: War\",\n     \"label\": \"War (written in)\"\n    },\n    {\n     \"Fear\": \"Abandoned buildings\",\n     \"label\": \"Abandoned places\"\n    }\n   ]\n  },\n  {\n   \"name\": \"rows\",\n   \"source\": \"dataset\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.Category !== ''Other Responses''\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"c\",\n     \"expr\": \"datum[''People Childhood''] || 0\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"a\",\n     \"expr\": \"datum[''People Adult''] || 0\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"k\",\n     \"expr\": \"datum[''People Kept''] || 0\"\n    },\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.c > 0 || datum.a > 0\"\n    },\n    {\n     \"type\": \"lookup\",\n     \"from\": \"labels\",\n     \"key\": \"Fear\",\n     \"fields\": [\n      \"Fear\"\n     ],\n     \"values\": [\n      \"label\"\n     ],\n     \"as\": [\n      \"lab0\"\n     ]\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"label\",\n     \"expr\": \"datum.lab0 || datum.FearShort || datum.Fear\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"hal\",\n     \"expr\": \"datum.Category === ''Dark, Unknown & Supernatural''\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"kind\",\n     \"expr\": \"datum.a === 0 ? ''dead'' : datum.c === 0 ? ''born'' : ''alive''\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"size\",\n     \"expr\": \"datum.kind === ''dead'' ? datum.c : datum.a\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"tier\",\n     \"expr\": \"datum.kind === ''dead'' ? (datum.c >= 3 ? 0 : 1) : datum.kind === ''born'' ? 0 : (datum.a >= 6 ? 0 : datum.a >= 3 ? 1 : 2)\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"gw\",\n     \"expr\": \"16 + datum.a * 1.5\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"gstep\",\n     \"expr\": \"datum.kind === ''born'' ? (datum.a >= 3 ? max(datum.gw + 4, 30) : datum.gw + 4) : 0\"\n    },\n    {\n     \"type\": \"window\",\n     \"groupby\": [\n      \"kind\",\n      \"tier\"\n     ],\n     \"sort\": {\n      \"field\": [\n       \"size\",\n       \"label\"\n      ],\n      \"order\": [\n       \"descending\",\n       \"ascending\"\n      ]\n     },\n     \"ops\": [\n      \"row_number\",\n      \"sum\"\n     ],\n     \"fields\": [\n      null,\n      \"gstep\"\n     ],\n     \"as\": [\n      \"rn\",\n      \"gcum\"\n     ],\n     \"frame\": [\n      null,\n      0\n     ]\n    }\n   ]\n  },\n  {\n   \"name\": \"deadT0\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''dead'' && datum.tier === 0\"\n    }\n   ]\n  },\n  {\n   \"name\": \"deadT1\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''dead'' && datum.tier === 1\"\n    }\n   ]\n  },\n  {\n   \"name\": \"aliveT0\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''alive'' && datum.tier === 0\"\n    }\n   ]\n  },\n  {\n   \"name\": \"aliveT1\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''alive'' && datum.tier === 1\"\n    }\n   ]\n  },\n  {\n   \"name\": \"aliveT2\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''alive'' && datum.tier === 2\"\n    }\n   ]\n  },\n  {\n   \"name\": \"bornAll\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''born''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"halBig\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''dead'' && datum.tier === 0 && datum.hal\"\n    }\n   ]\n  },\n  {\n   \"name\": \"aliveAll\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''alive''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"deadAll\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''dead''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"pos\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"formula\",\n     \"as\": \"idx\",\n     \"expr\": \"datum.kind === ''dead'' ? (datum.tier === 0 ? datum.rn - 1 : nD0 + datum.rn - 1) : datum.kind === ''born'' ? datum.rn - 1 : (datum.tier === 0 ? datum.rn - 1 : datum.tier === 1 ? nA0 + datum.rn - 1 : nA0 + nA1 + datum.rn - 1)\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"x\",\n     \"expr\": \"datum.kind === ''dead'' ? (datum.tier === 0 ? 40 + 14.0 + (datum.rn - 1) * 32 : dEnd0 + 8 + 5.0 + (datum.rn - 1) * 12) : datum.kind === ''born'' ? B0 + datum.gcum - datum.gstep + datum.gw / 2 : (datum.tier === 0 ? C0 + 7.0 + (datum.rn - 1) * 29 : datum.tier === 1 ? cEnd0 + 8 + 3.0 + (datum.rn - 1) * 9 : cEnd1 + 8 + 2.0 + (datum.rn - 1) * 6)\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"hw\",\n     \"expr\": \"datum.c >= 3 ? 28 : 10\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"hfull\",\n     \"expr\": \"22 + datum.c * 13\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"cw\",\n     \"expr\": \"datum.a >= 6 ? 14 : datum.a >= 3 ? 6 : 4\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"cfull\",\n     \"expr\": \"12 + datum.a * 13\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"fr\",\n     \"expr\": \"datum.k > 0 ? min(3.5 + 1.8 * datum.k, datum.a >= 6 ? 12 : datum.a >= 3 ? 5 : 2.5) : 0\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"gh\",\n     \"expr\": \"20 + datum.a * 8.5\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"top\",\n     \"expr\": \"datum.kind === ''dead'' ? datum.hfull + (datum.hal && datum.c >= 3 ? 22 : 0) : datum.kind === ''born'' ? datum.gh + 46 : datum.cfull + 7 + 2 * datum.fr + (datum.a >= 6 ? 26 : 0) + (datum.k === 0 ? 34 : 0)\"\n    }\n   ]\n  },\n  {\n   \"name\": \"pos_dead\",\n   \"source\": \"pos\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''dead''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"pos_alive\",\n   \"source\": \"pos\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''alive''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"pos_born\",\n   \"source\": \"pos\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''born''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"pos_halbig\",\n   \"source\": \"pos\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.kind === ''dead'' && datum.hal && datum.c >= 3\"\n    }\n   ]\n  }\n ],\n \"marks\": [\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_moon\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1237\n     },\n     \"y\": {\n      \"value\": 190\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 5600\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"value\": 0.95\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_moon2\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1251\n     },\n     \"y\": {\n      \"value\": 180\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 4300\n     },\n     \"fill\": {\n      \"value\": \"#1E0F4A\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"rect\",\n   \"name\": \"bg_ground\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 0\n     },\n     \"y\": {\n      \"value\": 545\n     },\n     \"width\": {\n      \"value\": 1357\n     },\n     \"height\": {\n      \"value\": 145\n     },\n     \"fill\": {\n      \"value\": \"#2A1A5E\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"rule\",\n   \"name\": \"bg_groundline\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 0\n     },\n     \"x2\": {\n      \"value\": 1357\n     },\n     \"y\": {\n      \"value\": 545\n     },\n     \"stroke\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.5\n     },\n     \"opacity\": {\n      \"value\": 0.6\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"bg_fog\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"value\": \"M-80 539 a300 20 0 1 0 600 0 a300 20 0 1 0 -600 0 Z\"\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.05 * (1 - pow(1 - clamp(t * 2, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"bg_fog_2\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"value\": \"M390 539 a300 20 0 1 0 600 0 a300 20 0 1 0 -600 0 Z\"\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.05 * (1 - pow(1 - clamp(t * 2, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"bg_fog_3\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"value\": \"M860 539 a300 20 0 1 0 600 0 a300 20 0 1 0 -600 0 Z\"\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.05 * (1 - pow(1 - clamp(t * 2, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 40\n     },\n     \"y\": {\n      \"value\": 32\n     },\n     \"text\": {\n      \"value\": \"BURIED\"\n     },\n     \"fontSize\": {\n      \"value\": 18\n     },\n     \"fill\": {\n      \"value\": \"#3DE0D0\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 40\n     },\n     \"y\": {\n      \"value\": 56\n     },\n     \"text\": {\n      \"signal\": \"nD + '' fears nobody holds now''\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 58\n     },\n     \"y\": {\n      \"value\": 80\n     },\n     \"text\": {\n      \"signal\": \"nHal + '' of the '' + nD0 + '' biggest are Halloween\\\\''s own''\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#FFB400\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"bg_lantern\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"''M'' + (46 - 2.9250000000000003) + '' '' + (75 - 10.075000000000001) + '' q2.9250000000000003 -3.9 5.8500000000000005 0'' + '' M'' + (46 - 3.25) + '' '' + (75 - 9.75) + '' h6.5'' + '' M'' + (46 - 4.55) + '' '' + (75) + '' a4.55 5.07 0 1 0 9.1 0 a4.55 5.07 0 1 0 -9.1 0'' + '' M'' + (46) + '' '' + (75 - 5.07) + '' v10.14'' + '' M'' + (46 - 3.25) + '' '' + (75 + 6.175) + '' h6.5''\"\n     },\n     \"stroke\": {\n      \"value\": \"#FFB400\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.6\n     },\n     \"fill\": {\n      \"value\": \"transparent\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"C0\"\n     },\n     \"y\": {\n      \"value\": 32\n     },\n     \"text\": {\n      \"value\": \"STILL BURNING\"\n     },\n     \"fontSize\": {\n      \"value\": 18\n     },\n     \"fill\": {\n      \"value\": \"#FF3D9A\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"C0\"\n     },\n     \"y\": {\n      \"value\": 56\n     },\n     \"text\": {\n      \"signal\": \"nA + '' fears still held · flame = kept since childhood''\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"C0\"\n     },\n     \"y\": {\n      \"value\": 80\n     },\n     \"text\": {\n      \"value\": \"no flame = feared now by different people\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"B0\"\n     },\n     \"y\": {\n      \"value\": 32\n     },\n     \"text\": {\n      \"value\": \"BORN\"\n     },\n     \"fontSize\": {\n      \"value\": 18\n     },\n     \"fill\": {\n      \"value\": \"#FFB400\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"B0\"\n     },\n     \"y\": {\n      \"value\": 56\n     },\n     \"text\": {\n      \"signal\": \"nB + '' fears new''\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"B0\"\n     },\n     \"y\": {\n      \"value\": 80\n     },\n     \"text\": {\n      \"value\": \"since childhood\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"stone\",\n   \"from\": {\n    \"data\": \"pos_dead\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"''M'' + (datum.x - datum.hw / 2) + '' 545 V'' + (545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) + datum.hw / 2) + '' A'' + (datum.hw / 2) + '' '' + (datum.hw / 2) + '' 0 0 1 '' + (datum.x + datum.hw / 2) + '' '' + (545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) + datum.hw / 2) + '' V545 Z''\"\n     },\n     \"fill\": {\n      \"value\": \"#2A1A5E\"\n     },\n     \"stroke\": {\n      \"value\": \"#3DE0D0\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.6\n     },\n     \"opacity\": {\n      \"signal\": \"datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) > 1 ? 1 : 0\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"rule\",\n   \"name\": \"stone_line\",\n   \"from\": {\n    \"data\": \"pos_dead\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x - 7\"\n     },\n     \"x2\": {\n      \"signal\": \"datum.x + 7\"\n     },\n     \"y\": {\n      \"signal\": \"545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) + 16\"\n     },\n     \"stroke\": {\n      \"value\": \"#3DE0D0\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.2\n     },\n     \"opacity\": {\n      \"signal\": \"datum.c >= 3 && datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) > 30 ? 1 : 0\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x\"\n     },\n     \"y\": {\n      \"signal\": \"545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) + 38\"\n     },\n     \"text\": {\n      \"signal\": \"datum.c >= 3 ? datum.c : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 19\n     },\n     \"fill\": {\n      \"signal\": \"datum.c >= 3 ? ''#FFF3DC'' : ''#B9AEDC''\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) > 10 ? 1 : 0\"\n     }\n    }\n   },\n   \"name\": \"in_stone_num\",\n   \"from\": {\n    \"data\": \"pos_dead\"\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x + 4\"\n     },\n     \"y\": {\n      \"value\": 563\n     },\n     \"text\": {\n      \"signal\": \"datum.c >= 3 ? datum.label : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"signal\": \"datum.hal ? ''#FFB400'' : ''#B9AEDC''\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"angle\": {\n      \"value\": -40\n     }\n    }\n   },\n   \"name\": \"lbl_dead\",\n   \"from\": {\n    \"data\": \"pos_dead\"\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"glyph_lantern\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"''M'' + (datum.x - 3.15) + '' '' + ((545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) - 12) - 10.85) + '' q3.15 -4.2 6.3 0'' + '' M'' + (datum.x - 3.5) + '' '' + ((545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) - 12) - 10.5) + '' h7'' + '' M'' + (datum.x - 4.8999999999999995) + '' '' + ((545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) - 12)) + '' a4.8999999999999995 5.46 0 1 0 9.799999999999999 0 a4.8999999999999995 5.46 0 1 0 -9.799999999999999 0'' + '' M'' + (datum.x) + '' '' + ((545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) - 12) - 5.46) + '' v10.92'' + '' M'' + (datum.x - 3.5) + '' '' + ((545 - datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) - 12) + 6.6499999999999995) + '' h7''\"\n     },\n     \"stroke\": {\n      \"value\": \"#FFB400\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.6\n     },\n     \"fill\": {\n      \"value\": \"transparent\"\n     },\n     \"opacity\": {\n      \"signal\": \"datum.hfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.03, 0, 1), 3)) > 10 ? 1 : 0\"\n     }\n    }\n   },\n   \"from\": {\n    \"data\": \"pos_halbig\"\n   }\n  },\n  {\n   \"type\": \"rect\",\n   \"name\": \"candle\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x - datum.cw / 2\"\n     },\n     \"width\": {\n      \"signal\": \"datum.cw\"\n     },\n     \"y\": {\n      \"signal\": \"(545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3)))\"\n     },\n     \"y2\": {\n      \"value\": 545\n     },\n     \"cornerRadius\": {\n      \"value\": 2\n     },\n     \"fill\": {\n      \"value\": \"#3A2878\"\n     },\n     \"stroke\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1\n     },\n     \"opacity\": {\n      \"signal\": \"datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3)) > 1 ? 1 : 0\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"rule\",\n   \"name\": \"wick\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x\"\n     },\n     \"x2\": {\n      \"signal\": \"datum.x\"\n     },\n     \"y\": {\n      \"signal\": \"(545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3)))\"\n     },\n     \"y2\": {\n      \"signal\": \"(545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 5\"\n     },\n     \"stroke\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.5\n     },\n     \"opacity\": {\n      \"signal\": \"datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3)) > 2 ? 1 : 0\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"flame\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"datum.k > 0 ? ''M'' + datum.x + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) - datum.fr) + '' C'' + (datum.x + datum.fr) + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) - 0.2 * datum.fr) + '' '' + (datum.x + 0.9 * datum.fr) + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) + 0.7 * datum.fr) + '' '' + datum.x + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) + datum.fr) + '' C'' + (datum.x - 0.9 * datum.fr) + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) + 0.7 * datum.fr) + '' '' + (datum.x - datum.fr) + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) - 0.2 * datum.fr) + '' '' + datum.x + '' '' + (((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) - datum.fr) + '' Z'' : ''''\"\n     },\n     \"fill\": {\n      \"value\": \"#FFB400\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.95 * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"flame_core\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x\"\n     },\n     \"y\": {\n      \"signal\": \"((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - datum.fr) + 0.35 * datum.fr\"\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"signal\": \"datum.k > 0 ? pow(datum.fr * 0.75, 2) * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3)) : 0\"\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"value\": 0.9\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"smoke\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"datum.k === 0 && datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3)) > 4 ? ''M'' + datum.x + '' '' + ((545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7) + '' q4 -7 0 -14 q-4 -7 0 -14'' : ''''\"\n     },\n     \"stroke\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.2\n     },\n     \"fill\": {\n      \"value\": \"transparent\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.6 * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x\"\n     },\n     \"y\": {\n      \"signal\": \"(545 - datum.cfull * (1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))) - 7 - (datum.k > 0 ? 2 * datum.fr : 30) - 8\"\n     },\n     \"text\": {\n      \"signal\": \"datum.a >= 6 ? datum.a : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 18\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"(1 - pow(1 - clamp(t * 1.3 - datum.idx * 0.015, 0, 1), 3))\"\n     }\n    }\n   },\n   \"name\": \"candle_num\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x + 4\"\n     },\n     \"y\": {\n      \"value\": 563\n     },\n     \"text\": {\n      \"signal\": \"datum.a >= 6 ? datum.label : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"signal\": \"datum.hal ? ''#FFB400'' : ''#B9AEDC''\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"angle\": {\n      \"value\": -40\n     }\n    }\n   },\n   \"name\": \"lbl_alive\",\n   \"from\": {\n    \"data\": \"pos_alive\"\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"ghost\",\n   \"from\": {\n    \"data\": \"pos_born\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"''M'' + (datum.x - datum.gw / 2) + '' '' + ((545 - 10 - (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3)) * (datum.gh + 36)) + datum.gh) + '' V'' + ((545 - 10 - (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3)) * (datum.gh + 36)) + datum.gw / 2) + '' A'' + (datum.gw / 2) + '' '' + (datum.gw / 2) + '' 0 0 1 '' + (datum.x + datum.gw / 2) + '' '' + ((545 - 10 - (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3)) * (datum.gh + 36)) + datum.gw / 2) + '' V'' + ((545 - 10 - (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3)) * (datum.gh + 36)) + datum.gh) + '' q'' + (-datum.gw / 8) + '' -8 '' + (-datum.gw / 4) + '' 0 q'' + (-datum.gw / 8) + '' 8 '' + (-datum.gw / 4) + '' 0 q'' + (-datum.gw / 8) + '' -8 '' + (-datum.gw / 4) + '' 0 q'' + (-datum.gw / 8) + '' 8 '' + (-datum.gw / 4) + '' 0 Z''\"\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"fillOpacity\": {\n      \"signal\": \"0.12 * (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3))\"\n     },\n     \"stroke\": {\n      \"value\": \"#FFB400\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.6\n     },\n     \"strokeOpacity\": {\n      \"signal\": \"0.95 * (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x\"\n     },\n     \"y\": {\n      \"signal\": \"(545 - 10 - (1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3)) * (datum.gh + 36)) + datum.gh * 0.6\"\n     },\n     \"text\": {\n      \"signal\": \"datum.a\"\n     },\n     \"fontSize\": {\n      \"signal\": \"datum.a >= 3 ? 19 : 15\"\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"(1 - pow(1 - clamp(t * 1.4 - 0.25 - datum.idx * 0.05, 0, 1), 3))\"\n     }\n    }\n   },\n   \"name\": \"in_ghost_num\",\n   \"from\": {\n    \"data\": \"pos_born\"\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x + 4\"\n     },\n     \"y\": {\n      \"value\": 563\n     },\n     \"text\": {\n      \"signal\": \"datum.a >= 3 ? datum.label : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"angle\": {\n      \"value\": -40\n     }\n    }\n   },\n   \"name\": \"lbl_born\",\n   \"from\": {\n    \"data\": \"pos_born\"\n   }\n  },\n  {\n   \"type\": \"rect\",\n   \"name\": \"hit\",\n   \"from\": {\n    \"data\": \"pos\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"datum.x - max(datum.kind === ''dead'' ? datum.hw : datum.kind === ''born'' ? datum.gw : datum.cw, 6) / 2 - 1\"\n     },\n     \"width\": {\n      \"signal\": \"max(datum.kind === ''dead'' ? datum.hw : datum.kind === ''born'' ? datum.gw : datum.cw, 6) + 2\"\n     },\n     \"y\": {\n      \"signal\": \"545 - datum.top\"\n     },\n     \"y2\": {\n      \"value\": 551\n     },\n     \"fill\": {\n      \"value\": \"#000000\"\n     },\n     \"fillOpacity\": {\n      \"value\": 0.001\n     },\n     \"cursor\": {\n      \"value\": \"pointer\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"card_link\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"hov ? ''M'' + (hov && hov.x < 746.35 ? clamp(hov ? (hov.x < 746.35 ? hov.x + 26 : hov.x - 448 - 26) : 0, 8, 901) : clamp(hov ? (hov.x < 746.35 ? hov.x + 26 : hov.x - 448 - 26) : 0, 8, 901) + 448) + '' 199.0 H'' + hov.x + '' V'' + (545 - hov.top + 4) : ''''\"\n     },\n     \"stroke\": {\n      \"signal\": \"hov && hov.kind === ''dead'' ? ''#3DE0D0'' : hov && hov.kind === ''born'' ? ''#FFB400'' : hov && hov.k === 0 ? ''#B9AEDC'' : ''#FF3D9A''\"\n     },\n     \"strokeDash\": {\n      \"value\": [\n       3,\n       4\n      ]\n     },\n     \"strokeWidth\": {\n      \"value\": 1.5\n     },\n     \"fill\": {\n      \"value\": \"transparent\"\n     },\n     \"opacity\": {\n      \"signal\": \"hov ? 1 : 0\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"group\",\n   \"name\": \"card\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"clamp(hov ? (hov.x < 746.35 ? hov.x + 26 : hov.x - 448 - 26) : 0, 8, 901)\"\n     },\n     \"y\": {\n      \"value\": 100\n     },\n     \"width\": {\n      \"value\": 448\n     },\n     \"height\": {\n      \"value\": 198\n     },\n     \"fill\": {\n      \"value\": \"#2A1A5E\"\n     },\n     \"stroke\": {\n      \"signal\": \"hov && hov.kind === ''dead'' ? ''#3DE0D0'' : hov && hov.kind === ''born'' ? ''#FFB400'' : hov && hov.k === 0 ? ''#B9AEDC'' : ''#FF3D9A''\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.8\n     },\n     \"fillOpacity\": {\n      \"signal\": \"hov ? 1 : 0\"\n     },\n     \"strokeOpacity\": {\n      \"signal\": \"hov ? 1 : 0\"\n     },\n     \"opacity\": {\n      \"signal\": \"hov ? 1 : 0\"\n     },\n     \"cornerRadiusTopLeft\": {\n      \"signal\": \"hov && hov.kind === ''dead'' ? 120 : 16\"\n     },\n     \"cornerRadiusTopRight\": {\n      \"signal\": \"hov && hov.kind === ''dead'' ? 120 : 16\"\n     },\n     \"cornerRadiusBottomLeft\": {\n      \"value\": 16\n     },\n     \"cornerRadiusBottomRight\": {\n      \"value\": 16\n     }\n    }\n   },\n   \"marks\": [\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 224.0\n       },\n       \"y\": {\n        \"signal\": \"hov && hov.kind === ''dead'' ? 50 : 36\"\n       },\n       \"text\": {\n        \"signal\": \"hov ? (hov.kind === ''dead'' ? ''HERE LIES'' : hov.kind === ''born'' ? ''BORN IN ADULTHOOD'' : hov.k > 0 ? ''STILL BURNING'' : ''RELIT BY OTHERS'') + (hov.hal ? ''  ·  HALLOWEEN\\\\''S OWN'' : '''') : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 16\n       },\n       \"fill\": {\n        \"signal\": \"hov && hov.kind === ''dead'' ? ''#3DE0D0'' : hov && hov.kind === ''born'' ? ''#FFB400'' : hov && hov.k === 0 ? ''#B9AEDC'' : ''#FF3D9A''\"\n       },\n       \"fontWeight\": {\n        \"value\": 700\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 224.0\n       },\n       \"y\": {\n        \"signal\": \"hov && hov.kind === ''dead'' ? 86 : 74\"\n       },\n       \"text\": {\n        \"signal\": \"hov ? hov.label : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 28\n       },\n       \"fill\": {\n        \"value\": \"#FFF3DC\"\n       },\n       \"fontWeight\": {\n        \"value\": 700\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"limit\": {\n        \"value\": 408\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 132.0\n       },\n       \"y\": {\n        \"value\": 142\n       },\n       \"text\": {\n        \"signal\": \"hov ? (hov.kind === ''born'' && ''c'' === ''c'' ? ''—'' : format(hov.c, '','')) : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 40\n       },\n       \"fill\": {\n        \"value\": \"#B9AEDC\"\n       },\n       \"fontWeight\": {\n        \"value\": 900\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Arial Black\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 224.0\n       },\n       \"y\": {\n        \"value\": 134\n       },\n       \"text\": {\n        \"signal\": \"hov ? ''→'' : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 28\n       },\n       \"fill\": {\n        \"value\": \"#B9AEDC\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 316.0\n       },\n       \"y\": {\n        \"value\": 142\n       },\n       \"text\": {\n        \"signal\": \"hov ? (hov.kind === ''born'' && ''a'' === ''c'' ? ''—'' : format(hov.a, '','')) : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 40\n       },\n       \"fill\": {\n        \"signal\": \"hov && hov.kind === ''dead'' ? ''#3DE0D0'' : hov && hov.kind === ''born'' ? ''#FFB400'' : hov && hov.k === 0 ? ''#B9AEDC'' : ''#FF3D9A''\"\n       },\n       \"fontWeight\": {\n        \"value\": 900\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Arial Black\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 132.0\n       },\n       \"y\": {\n        \"value\": 169\n       },\n       \"text\": {\n        \"signal\": \"hov ? ''as a child'' : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 15\n       },\n       \"fill\": {\n        \"value\": \"#B9AEDC\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 316.0\n       },\n       \"y\": {\n        \"value\": 169\n       },\n       \"text\": {\n        \"signal\": \"hov ? ''now'' : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 15\n       },\n       \"fill\": {\n        \"value\": \"#B9AEDC\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 224.0\n       },\n       \"y\": {\n        \"value\": 191\n       },\n       \"text\": {\n        \"signal\": \"hov ? (hov.kind === ''dead'' ? ''Outgrown by everyone who had it.'' : hov.kind === ''born'' ? ''Nobody had it as a child.'' : hov.k > 0 ? (hov.k === hov.c ? ''All '' + hov.k + '' never let it go.'' : hov.k + '' of '' + hov.c + '' never let it go.'') : ''Nobody kept it. Others fear it now.'') : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 17\n       },\n       \"fill\": {\n        \"value\": \"#FFF3DC\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"fontStyle\": {\n        \"value\": \"italic\"\n       },\n       \"limit\": {\n        \"value\": 418\n       },\n       \"opacity\": {\n        \"signal\": \"hov ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    }\n   ]\n  }\n ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.0'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'A graveyard of every fear named by 105 people. Sixteen fears nobody holds any more stand as headstones; seven of the nine biggest are Halloween''s own: demons, basements, being watched, cemeteries, aliens, clowns, dolls. Forty-seven fears still burn as candles, tallest war (19 people now), uncertainty about the future (14) and death (12); a flame means some kept the fear since childhood. Eight fears rise as ghosts because nobody had them as children, led by financial insecurity (11).'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

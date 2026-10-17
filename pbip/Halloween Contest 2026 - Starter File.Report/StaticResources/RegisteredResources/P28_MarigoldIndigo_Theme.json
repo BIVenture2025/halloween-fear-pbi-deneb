@@ -1,0 +1,139 @@
+{
+  "name": "P28_MarigoldIndigo_Theme.json",
+  "dataColors": [
+    "#3DE0D0",
+    "#FF3D9A",
+    "#FFB400",
+    "#A99BD6",
+    "#5B2DBF",
+    "#C8006E",
+    "#6E5FA8",
+    "#1A1528"
+  ],
+  "background": "#1E0F4A",
+  "foreground": "#FFF3DC",
+  "tableAccent": "#FFB400",
+  "good": "#3DE0D0",
+  "neutral": "#A99BD6",
+  "bad": "#FF3D9A",
+  "maximum": "#FFB400",
+  "center": "#A99BD6",
+  "minimum": "#3DE0D0",
+  "textClasses": {
+    "callout": {
+      "fontSize": 45,
+      "fontFace": "Arial Black",
+      "color": "#FFF3DC"
+    },
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Bold",
+      "color": "#FFF3DC"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#FFF3DC"
+    },
+    "label": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "color": "#FFF3DC"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#1E0F4A"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#120A2C"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "barChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "showAxisTitle": false,
+            "gridlineShow": false
+          }
+        ],
+        "valueAxis": [
+          {
+            "show": false,
+            "gridlineShow": false
+          }
+        ],
+        "labels": [
+          {
+            "show": true
+          }
+        ]
+      }
+    },
+    "cardVisual": {
+      "*": {
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "grid": [
+          {
+            "gridVertical": false,
+            "gridHorizontal": false,
+            "rowPadding": 2
+          }
+        ]
+      }
+    }
+  }
+}

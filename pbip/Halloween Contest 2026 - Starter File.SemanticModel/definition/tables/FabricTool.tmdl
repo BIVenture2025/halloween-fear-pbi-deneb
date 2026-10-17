@@ -1,0 +1,36 @@
+/// P28: one row per respondent and Fabric tool named (fabricToolsJson expanded). Filtered from DataNightmare through ResponseKey.
+table FabricTool
+	lineageTag: 98278e3d-3f7d-54da-a296-5b4b266995a4
+
+	column ResponseKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b3ffecea-68a7-53e9-8394-2467709af9cb
+		summarizeBy: none
+		sourceColumn: ResponseKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tool
+		dataType: string
+		lineageTag: 95d6395e-5fdc-569b-a3b4-d5fda27bd9d6
+		summarizeBy: none
+		sourceColumn: Tool
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FabricTool = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectColumns(raw_survey_responses, {"ResponseKey", "fabricToolsJson"}),
+				    Lists = Table.AddColumn(Source, "Tool", each if [fabricToolsJson] = null or Text.Trim([fabricToolsJson]) = "" then {} else Json.Document([fabricToolsJson]), type list),
+				    Expanded = Table.ExpandListColumn(Table.RemoveColumns(Lists, {"fabricToolsJson"}), "Tool"),
+				    NonNull = Table.SelectRows(Expanded, each [Tool] <> null),
+				    Typed = Table.TransformColumnTypes(NonNull, {{"ResponseKey", Int64.Type}, {"Tool", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

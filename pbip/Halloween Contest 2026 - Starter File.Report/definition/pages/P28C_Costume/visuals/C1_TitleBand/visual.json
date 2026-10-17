@@ -1,0 +1,286 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "C1_TitleBand",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 1000,
+    "height": 380,
+    "width": 1357,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "Beat"
+                }
+              },
+              "queryRef": "DimFear.Beat",
+              "nativeQueryRef": "Beat"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Childhood"
+                }
+              },
+              "queryRef": "_Measures.People Childhood",
+              "nativeQueryRef": "People Childhood"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Adult"
+                }
+              },
+              "queryRef": "_Measures.People Adult",
+              "nativeQueryRef": "People Adult"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Naming A Fear Childhood"
+                }
+              },
+              "queryRef": "_Measures.People Naming A Fear Childhood",
+              "nativeQueryRef": "People Naming A Fear Childhood"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Naming A Fear Adult"
+                }
+              },
+              "queryRef": "_Measures.People Naming A Fear Adult",
+              "nativeQueryRef": "People Naming A Fear Adult"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.0.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n \"$schema\": \"https://vega.github.io/schema/vega/v5.json\",\n \"description\": \"P28 C / V1 title band: three before-and-after counts count up on open.\",\n \"width\": 1357,\n \"height\": 380,\n \"padding\": 0,\n \"autosize\": \"none\",\n \"signals\": [\n  {\n   \"name\": \"t0\",\n   \"init\": \"now()\"\n  },\n  {\n   \"name\": \"clock\",\n   \"init\": \"0\",\n   \"on\": [\n    {\n     \"events\": {\n      \"type\": \"timer\",\n      \"throttle\": 40\n     },\n     \"update\": \"min(now() - t0, 4600)\"\n    }\n   ]\n  },\n  {\n   \"name\": \"t\",\n   \"update\": \"min(1, clock / 4500)\"\n  },\n  {\n   \"name\": \"hc\",\n   \"update\": \"length(data(''b1'')) ? (data(''b1'')[0][''People Childhood''] || 0) : 0\"\n  },\n  {\n   \"name\": \"ha\",\n   \"update\": \"length(data(''b1'')) ? (data(''b1'')[0][''People Adult''] || 0) : 0\"\n  },\n  {\n   \"name\": \"nc\",\n   \"update\": \"length(data(''b3'')) ? (data(''b3'')[0][''People Childhood''] || 0) : 0\"\n  },\n  {\n   \"name\": \"na\",\n   \"update\": \"length(data(''b3'')) ? (data(''b3'')[0][''People Adult''] || 0) : 0\"\n  },\n  {\n   \"name\": \"fc\",\n   \"update\": \"length(data(''dataset'')) ? (data(''dataset'')[0][''People Naming A Fear Childhood''] || 0) : 0\"\n  },\n  {\n   \"name\": \"fa\",\n   \"update\": \"length(data(''dataset'')) ? (data(''dataset'')[0][''People Naming A Fear Adult''] || 0) : 0\"\n  }\n ],\n \"data\": [\n  {\n   \"name\": \"dataset\"\n  },\n  {\n   \"name\": \"b1\",\n   \"source\": \"dataset\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.Beat === 1\"\n    }\n   ]\n  },\n  {\n   \"name\": \"b3\",\n   \"source\": \"dataset\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.Beat === 3\"\n    }\n   ]\n  }\n ],\n \"marks\": [\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_star\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1190\n     },\n     \"y\": {\n      \"value\": 40\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.7 - 0.35 * (1 - pow(1 - clamp(t, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_star_2\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1250\n     },\n     \"y\": {\n      \"value\": 96\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 9\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.7 - 0.35 * (1 - pow(1 - clamp(t, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_star_3\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1318\n     },\n     \"y\": {\n      \"value\": 30\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.7 - 0.35 * (1 - pow(1 - clamp(t, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_star_4\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1300\n     },\n     \"y\": {\n      \"value\": 168\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 9\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.7 - 0.35 * (1 - pow(1 - clamp(t, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_star_5\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1214\n     },\n     \"y\": {\n      \"value\": 214\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.7 - 0.35 * (1 - pow(1 - clamp(t, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"symbol\",\n   \"name\": \"bg_star_6\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1336\n     },\n     \"y\": {\n      \"value\": 236\n     },\n     \"shape\": {\n      \"value\": \"circle\"\n     },\n     \"size\": {\n      \"value\": 9\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"opacity\": {\n      \"signal\": \"0.7 - 0.35 * (1 - pow(1 - clamp(t, 0, 1), 3))\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 60\n     },\n     \"y\": {\n      \"value\": 52\n     },\n     \"text\": {\n      \"value\": \"WHAT KEEPS YOU UP AT NIGHT?  ·  105 PEOPLE, THEN AND NOW\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#FFB400\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 56\n     },\n     \"y\": {\n      \"value\": 142\n     },\n     \"text\": {\n      \"value\": \"Fear changes costume\"\n     },\n     \"fontSize\": {\n      \"value\": 84\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 60\n     },\n     \"y\": {\n      \"value\": 192\n     },\n     \"text\": {\n      \"value\": \"We outgrew the fears Halloween is made of.\"\n     },\n     \"fontSize\": {\n      \"value\": 22\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 60\n     },\n     \"y\": {\n      \"value\": 222\n     },\n     \"text\": {\n      \"value\": \"We did not outgrow fear — it moved to things nobody carves a lantern for.\"\n     },\n     \"fontSize\": {\n      \"value\": 22\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 60\n     },\n     \"y\": {\n      \"value\": 270\n     },\n     \"text\": {\n      \"value\": \"HALLOWEEN''S OWN FEARS\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#3DE0D0\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 182\n     },\n     \"y\": {\n      \"value\": 336\n     },\n     \"text\": {\n      \"signal\": \"format(round(hc * (1 - pow(1 - clamp(t * 1.6 - 0.0, 0, 1), 3))), '','')\"\n     },\n     \"fontSize\": {\n      \"value\": 56\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 214\n     },\n     \"y\": {\n      \"value\": 326\n     },\n     \"text\": {\n      \"value\": \"→\"\n     },\n     \"fontSize\": {\n      \"value\": 30\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 246\n     },\n     \"y\": {\n      \"value\": 336\n     },\n     \"text\": {\n      \"signal\": \"format(round(ha * (1 - pow(1 - clamp(t * 1.6 - 0.0, 0, 1), 3))), '','')\"\n     },\n     \"fontSize\": {\n      \"value\": 56\n     },\n     \"fill\": {\n      \"value\": \"#3DE0D0\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 60\n     },\n     \"y\": {\n      \"value\": 366\n     },\n     \"text\": {\n      \"value\": \"people afraid of the dark & the supernatural\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 486\n     },\n     \"y\": {\n      \"value\": 270\n     },\n     \"text\": {\n      \"value\": \"FEAR ITSELF\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 608\n     },\n     \"y\": {\n      \"value\": 336\n     },\n     \"text\": {\n      \"signal\": \"format(round(fc * (1 - pow(1 - clamp(t * 1.6 - 0.12, 0, 1), 3))), '','')\"\n     },\n     \"fontSize\": {\n      \"value\": 56\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 640\n     },\n     \"y\": {\n      \"value\": 326\n     },\n     \"text\": {\n      \"value\": \"→\"\n     },\n     \"fontSize\": {\n      \"value\": 30\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 672\n     },\n     \"y\": {\n      \"value\": 336\n     },\n     \"text\": {\n      \"signal\": \"format(round(fa * (1 - pow(1 - clamp(t * 1.6 - 0.12, 0, 1), 3))), '','')\"\n     },\n     \"fontSize\": {\n      \"value\": 56\n     },\n     \"fill\": {\n      \"value\": \"#FFF3DC\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 486\n     },\n     \"y\": {\n      \"value\": 366\n     },\n     \"text\": {\n      \"value\": \"people naming at least one fear\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 912\n     },\n     \"y\": {\n      \"value\": 270\n     },\n     \"text\": {\n      \"value\": \"THE NEW FEARS\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#FFB400\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1034\n     },\n     \"y\": {\n      \"value\": 336\n     },\n     \"text\": {\n      \"signal\": \"format(round(nc * (1 - pow(1 - clamp(t * 1.6 - 0.24, 0, 1), 3))), '','')\"\n     },\n     \"fontSize\": {\n      \"value\": 56\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1066\n     },\n     \"y\": {\n      \"value\": 326\n     },\n     \"text\": {\n      \"value\": \"→\"\n     },\n     \"fontSize\": {\n      \"value\": 30\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 1098\n     },\n     \"y\": {\n      \"value\": 336\n     },\n     \"text\": {\n      \"signal\": \"format(round(na * (1 - pow(1 - clamp(t * 1.6 - 0.24, 0, 1), 3))), '','')\"\n     },\n     \"fontSize\": {\n      \"value\": 56\n     },\n     \"fill\": {\n      \"value\": \"#FFB400\"\n     },\n     \"fontWeight\": {\n      \"value\": 900\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Arial Black\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 912\n     },\n     \"y\": {\n      \"value\": 366\n     },\n     \"text\": {\n      \"value\": \"people afraid of loss, money, the future\"\n     },\n     \"fontSize\": {\n      \"value\": 16\n     },\n     \"fill\": {\n      \"value\": \"#B9AEDC\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  }\n ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.0'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Fear changes costume. People who feared the dark and the supernatural fell from 48 to 14; people naming at least one fear fell only from 105 to 96; people fearing loss, money or the future rose from 28 to 66.'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

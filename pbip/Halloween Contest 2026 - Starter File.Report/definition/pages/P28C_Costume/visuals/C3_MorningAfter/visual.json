@@ -1,0 +1,286 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "C3_MorningAfter",
+  "position": {
+    "x": 60,
+    "y": 1160,
+    "z": 3000,
+    "height": 440,
+    "width": 1237,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "Fear"
+                }
+              },
+              "queryRef": "DimFear.Fear",
+              "nativeQueryRef": "Fear"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "FearShort"
+                }
+              },
+              "queryRef": "DimFear.FearShort",
+              "nativeQueryRef": "FearShort"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFear"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "DimFear.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Childhood"
+                }
+              },
+              "queryRef": "_Measures.People Childhood",
+              "nativeQueryRef": "People Childhood"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "People Adult"
+                }
+              },
+              "queryRef": "_Measures.People Adult",
+              "nativeQueryRef": "People Adult"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.0.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n \"$schema\": \"https://vega.github.io/schema/vega/v5.json\",\n \"description\": \"P28 C / V3 the morning after: top-12 fears by people as a child vs now; lines draw on open; hover spotlights one fear.\",\n \"width\": 1237,\n \"height\": 440,\n \"padding\": 0,\n \"autosize\": \"none\",\n \"signals\": [\n  {\n   \"name\": \"t0\",\n   \"init\": \"now()\"\n  },\n  {\n   \"name\": \"clock\",\n   \"init\": \"0\",\n   \"on\": [\n    {\n     \"events\": {\n      \"type\": \"timer\",\n      \"throttle\": 40\n     },\n     \"update\": \"min(now() - t0, 4600)\"\n    }\n   ]\n  },\n  {\n   \"name\": \"t\",\n   \"update\": \"min(1, clock / 4500)\"\n  },\n  {\n   \"name\": \"hovD\",\n   \"value\": null,\n   \"on\": [\n    {\n     \"events\": \"@lbl0:mouseover, @lbl1:mouseover, @line:mouseover\",\n     \"update\": \"datum\"\n    },\n    {\n     \"events\": \"@lbl0:mouseout, @lbl1:mouseout, @line:mouseout\",\n     \"update\": \"null\"\n    }\n   ]\n  },\n  {\n   \"name\": \"hovF\",\n   \"update\": \"hovD ? hovD.label : null\"\n  }\n ],\n \"data\": [\n  {\n   \"name\": \"dataset\"\n  },\n  {\n   \"name\": \"labels\",\n   \"values\": [\n    {\n     \"Fear\": \"Demons/the devil\",\n     \"label\": \"Demons\"\n    },\n    {\n     \"Fear\": \"Basements / Attics\",\n     \"label\": \"Basements\"\n    },\n    {\n     \"Fear\": \"Dolls/mannequins\",\n     \"label\": \"Dolls\"\n    },\n    {\n     \"Fear\": \"Doctors/hospitals\",\n     \"label\": \"Doctors\"\n    },\n    {\n     \"Fear\": \"Open/empty spaces\",\n     \"label\": \"Open spaces\"\n    },\n    {\n     \"Fear\": \"Thunderstorms/lightning\",\n     \"label\": \"Thunderstorms\"\n    },\n    {\n     \"Fear\": \"Death (your own or a loved one’s)\",\n     \"label\": \"Death\"\n    },\n    {\n     \"Fear\": \"Cancer or another serious diagnosis\",\n     \"label\": \"Serious diagnosis\"\n    },\n    {\n     \"Fear\": \"Financial insecurity/poverty\",\n     \"label\": \"Financial insecurity\"\n    },\n    {\n     \"Fear\": \"Uncertainty about the future\",\n     \"label\": \"Uncertain future\"\n    },\n    {\n     \"Fear\": \"Wasting one’s life/potential\",\n     \"label\": \"Wasting potential\"\n    },\n    {\n     \"Fear\": \"Being trapped / small spaces\",\n     \"label\": \"Being trapped\"\n    },\n    {\n     \"Fear\": \"Insects/bugs in general\",\n     \"label\": \"Insects\"\n    },\n    {\n     \"Fear\": \"Radioactivity/nuclear disaster\",\n     \"label\": \"Nuclear disaster\"\n    },\n    {\n     \"Fear\": \"Losing a limb or developing a disability\",\n     \"label\": \"Losing a limb\"\n    },\n    {\n     \"Fear\": \"Separation from friends or family\",\n     \"label\": \"Separation\"\n    },\n    {\n     \"Fear\": \"Not being good enough\",\n     \"label\": \"Not good enough\"\n    },\n    {\n     \"Fear\": \"The unknown/unfamiliar\",\n     \"label\": \"The unknown\"\n    },\n    {\n     \"Fear\": \"Monsters under the bed\",\n     \"label\": \"Monsters\"\n    },\n    {\n     \"Fear\": \"Natural disasters generally\",\n     \"label\": \"Natural disasters\"\n    },\n    {\n     \"Fear\": \"Getting sick/illness\",\n     \"label\": \"Getting sick\"\n    },\n    {\n     \"Fear\": \"Germs/contamination\",\n     \"label\": \"Germs\"\n    },\n    {\n     \"Fear\": \"Being alone / Loneliness\",\n     \"label\": \"Loneliness\"\n    },\n    {\n     \"Fear\": \"Conflict/confrontation\",\n     \"label\": \"Conflict\"\n    },\n    {\n     \"Fear\": \"Rats/mice\",\n     \"label\": \"Rats\"\n    },\n    {\n     \"Fear\": \"Bees/wasps\",\n     \"label\": \"Bees\"\n    },\n    {\n     \"Fear\": \"Needles/shots\",\n     \"label\": \"Needles\"\n    },\n    {\n     \"Fear\": \"Failing at work/school\",\n     \"label\": \"Failing at work\"\n    },\n    {\n     \"Fear\": \"Deep/open water\",\n     \"label\": \"Deep water\"\n    },\n    {\n     \"Fear\": \"Intruders/home invasion\",\n     \"label\": \"Intruders\"\n    },\n    {\n     \"Fear\": \"Divorce/breakup\",\n     \"label\": \"Divorce\"\n    },\n    {\n     \"Fear\": \"Something else: War\",\n     \"label\": \"War (written in)\"\n    },\n    {\n     \"Fear\": \"Abandoned buildings\",\n     \"label\": \"Abandoned places\"\n    }\n   ]\n  },\n  {\n   \"name\": \"rows\",\n   \"source\": \"dataset\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.Category !== ''Other Responses''\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"c\",\n     \"expr\": \"datum[''People Childhood''] || 0\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"a\",\n     \"expr\": \"datum[''People Adult''] || 0\"\n    },\n    {\n     \"type\": \"lookup\",\n     \"from\": \"labels\",\n     \"key\": \"Fear\",\n     \"fields\": [\n      \"Fear\"\n     ],\n     \"values\": [\n      \"label\"\n     ],\n     \"as\": [\n      \"lab0\"\n     ]\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"label\",\n     \"expr\": \"datum.lab0 || datum.FearShort || datum.Fear\"\n    },\n    {\n     \"type\": \"window\",\n     \"sort\": {\n      \"field\": [\n       \"c\",\n       \"label\"\n      ],\n      \"order\": [\n       \"descending\",\n       \"ascending\"\n      ]\n     },\n     \"ops\": [\n      \"row_number\"\n     ],\n     \"as\": [\n      \"lr\"\n     ]\n    },\n    {\n     \"type\": \"window\",\n     \"sort\": {\n      \"field\": [\n       \"a\",\n       \"label\"\n      ],\n      \"order\": [\n       \"descending\",\n       \"ascending\"\n      ]\n     },\n     \"ops\": [\n      \"row_number\"\n     ],\n     \"as\": [\n      \"rr\"\n     ]\n    },\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.lr <= 12 || datum.rr <= 12\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"y1\",\n     \"expr\": \"82 + (min(datum.lr, 13) - 0.5) * 28\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"y2\",\n     \"expr\": \"82 + (min(datum.rr, 13) - 0.5) * 28\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"both\",\n     \"expr\": \"datum.lr <= 12 && datum.rr <= 12\"\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"col\",\n     \"expr\": \"datum.rr < datum.lr ? ''#5B2DBF'' : datum.rr > datum.lr ? ''#C8006E'' : ''#5A5470''\"\n    }\n   ]\n  },\n  {\n   \"name\": \"stay\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"filter\",\n     \"expr\": \"datum.both\"\n    }\n   ]\n  }\n ],\n \"marks\": [\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 0\n     },\n     \"y\": {\n      \"value\": 28\n     },\n     \"text\": {\n      \"value\": \"THE MORNING AFTER\"\n     },\n     \"fontSize\": {\n      \"value\": 22\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 300\n     },\n     \"y\": {\n      \"value\": 28\n     },\n     \"text\": {\n      \"signal\": \"''top 12 fears by people, as a child → now  ·  only '' + length(data(''stay'')) + '' stay on the list''\"\n     },\n     \"fontSize\": {\n      \"value\": 17\n     },\n     \"fill\": {\n      \"value\": \"#5A5470\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 318\n     },\n     \"y\": {\n      \"value\": 70\n     },\n     \"text\": {\n      \"value\": \"AS A CHILD\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#C8006E\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 919\n     },\n     \"y\": {\n      \"value\": 70\n     },\n     \"text\": {\n      \"value\": \"NOW\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#5B2DBF\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"path\",\n   \"name\": \"line\",\n   \"from\": {\n    \"data\": \"rows\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"path\": {\n      \"signal\": \"datum.both ? ''M330 '' + datum.y1 + '' C618.5 '' + datum.y1 + '' 618.5 '' + datum.y2 + '' 907 '' + datum.y2 : datum.lr <= 12 ? ''M330 '' + datum.y1 + '' h'' + (115.4 * (1 - pow(1 - clamp(t * 1.5 - 0.3, 0, 1), 3))) : ''M907 '' + datum.y2 + '' h'' + (-115.4 * (1 - pow(1 - clamp(t * 1.5 - 0.3, 0, 1), 3)))\"\n     },\n     \"stroke\": {\n      \"signal\": \"datum.both ? datum.col : (datum.lr <= 12 ? ''#C8006E'' : ''#5B2DBF'')\"\n     },\n     \"strokeDash\": {\n      \"signal\": \"datum.both ? [1237, 1237] : [5, 5]\"\n     },\n     \"strokeDashOffset\": {\n      \"signal\": \"datum.both ? 1237 * (1 - (1 - pow(1 - clamp(t * 1.5 - 0.3, 0, 1), 3))) : 0\"\n     },\n     \"fill\": {\n      \"value\": \"transparent\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovF ? (hovF === datum.label ? 1 : 0.14) : (datum.both ? 0.95 : 0.6)\"\n     },\n     \"strokeWidth\": {\n      \"signal\": \"hovF === datum.label ? 5 : datum.both ? 3 : 1.8\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 318\n     },\n     \"y\": {\n      \"signal\": \"datum.y1 + 6\"\n     },\n     \"text\": {\n      \"signal\": \"datum.lr <= 12 ? datum.label + ''  '' + datum.c : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 18\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"signal\": \"hovF === datum.label ? 700 : 400\"\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovF && hovF !== datum.label ? 0.35 : 1\"\n     }\n    }\n   },\n   \"name\": \"lbl0\",\n   \"from\": {\n    \"data\": \"rows\"\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 919\n     },\n     \"y\": {\n      \"signal\": \"datum.y2 + 6\"\n     },\n     \"text\": {\n      \"signal\": \"datum.rr <= 12 ? datum.a + ''  '' + datum.label : ''''\"\n     },\n     \"fontSize\": {\n      \"value\": 18\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"signal\": \"hovF === datum.label ? 700 : 400\"\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovF && hovF !== datum.label ? 0.35 : 1\"\n     }\n    }\n   },\n   \"name\": \"lbl1\",\n   \"from\": {\n    \"data\": \"rows\"\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 618.5\n     },\n     \"y\": {\n      \"value\": 434\n     },\n     \"text\": {\n      \"value\": \"violet = climbed  ·  magenta = fell  ·  dashed = drops out of, or enters, the top 12\"\n     },\n     \"fontSize\": {\n      \"value\": 15\n     },\n     \"fill\": {\n      \"value\": \"#5A5470\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"center\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"fontStyle\": {\n      \"value\": \"italic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"group\",\n   \"name\": \"card\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 0\n     },\n     \"y\": {\n      \"value\": 0\n     },\n     \"width\": {\n      \"value\": 1237\n     },\n     \"height\": {\n      \"value\": 48\n     },\n     \"fill\": {\n      \"value\": \"#FFF9EC\"\n     },\n     \"stroke\": {\n      \"signal\": \"hovD && hovD.rr < hovD.lr ? ''#5B2DBF'' : hovD && hovD.rr > hovD.lr ? ''#C8006E'' : ''#5A5470''\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.8\n     },\n     \"cornerRadius\": {\n      \"value\": 12\n     },\n     \"fillOpacity\": {\n      \"signal\": \"hovD ? 1 : 0\"\n     },\n     \"strokeOpacity\": {\n      \"signal\": \"hovD ? 1 : 0\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovD ? 1 : 0\"\n     }\n    }\n   },\n   \"marks\": [\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 16\n       },\n       \"y\": {\n        \"value\": 19\n       },\n       \"text\": {\n        \"signal\": \"hovD ? (hovD.lr > 12 ? ''NEW TO THE TOP 12'' : hovD.rr > 12 ? ''DROPPED OUT OF THE TOP 12'' : hovD.rr < hovD.lr ? ''CLIMBED '' + (hovD.lr - hovD.rr) + (hovD.lr - hovD.rr === 1 ? '' PLACE'' : '' PLACES'') : hovD.rr > hovD.lr ? ''FELL '' + (hovD.rr - hovD.lr) + (hovD.rr - hovD.lr === 1 ? '' PLACE'' : '' PLACES'') : ''HELD ITS PLACE'') : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 15\n       },\n       \"fill\": {\n        \"signal\": \"hovD && hovD.rr < hovD.lr ? ''#5B2DBF'' : hovD && hovD.rr > hovD.lr ? ''#C8006E'' : ''#5A5470''\"\n       },\n       \"fontWeight\": {\n        \"value\": 700\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovD ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 16\n       },\n       \"y\": {\n        \"value\": 41\n       },\n       \"text\": {\n        \"signal\": \"hovD ? hovD.label : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 20\n       },\n       \"fill\": {\n        \"value\": \"#1A1528\"\n       },\n       \"fontWeight\": {\n        \"value\": 700\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"limit\": {\n        \"value\": 360\n       },\n       \"opacity\": {\n        \"signal\": \"hovD ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 592.5\n       },\n       \"y\": {\n        \"value\": 36\n       },\n       \"text\": {\n        \"signal\": \"hovD ? (hovD.lr > 12 ? ''outside'' : ''#'' + hovD.lr) : ''''\"\n       },\n       \"fontSize\": {\n        \"signal\": \"hovD && hovD.lr > 12 ? 18 : 26\"\n       },\n       \"fill\": {\n        \"value\": \"#5A5470\"\n       },\n       \"fontWeight\": {\n        \"value\": 900\n       },\n       \"align\": {\n        \"value\": \"right\"\n       },\n       \"font\": {\n        \"value\": \"Arial Black\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovD ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 618.5\n       },\n       \"y\": {\n        \"value\": 33\n       },\n       \"text\": {\n        \"signal\": \"hovD ? ''→'' : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 22\n       },\n       \"fill\": {\n        \"value\": \"#5A5470\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"center\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovD ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 644.5\n       },\n       \"y\": {\n        \"value\": 36\n       },\n       \"text\": {\n        \"signal\": \"hovD ? (hovD.rr > 12 ? ''outside'' : ''#'' + hovD.rr) : ''''\"\n       },\n       \"fontSize\": {\n        \"signal\": \"hovD && hovD.rr > 12 ? 18 : 26\"\n       },\n       \"fill\": {\n        \"signal\": \"hovD && hovD.rr < hovD.lr ? ''#5B2DBF'' : hovD && hovD.rr > hovD.lr ? ''#C8006E'' : ''#5A5470''\"\n       },\n       \"fontWeight\": {\n        \"value\": 900\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Arial Black\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovD ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 1221\n       },\n       \"y\": {\n        \"value\": 32\n       },\n       \"text\": {\n        \"signal\": \"hovD ? hovD.c + (hovD.c === 1 ? '' person'' : '' people'') + '' as a child  →  '' + hovD.a + '' now'' : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 18\n       },\n       \"fill\": {\n        \"value\": \"#1A1528\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"right\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovD ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    }\n   ]\n  }\n ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.0'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'The morning after: top-12 fears as a child versus now. Only being trapped, snakes and death stay on the list. The dark, heights, demons and dentists drop out; war, uncertainty, financial insecurity and not being good enough enter.'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

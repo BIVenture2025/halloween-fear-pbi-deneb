@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Halloween Contest 2026 - Starter File"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "401241a7-227e-4a91-a4d1-943c59237e16"
+  }
+}

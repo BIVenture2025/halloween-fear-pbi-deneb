@@ -1,0 +1,314 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "C4_DataNightmare",
+  "position": {
+    "x": 60,
+    "y": 1612,
+    "z": 4000,
+    "height": 240,
+    "width": 1237,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DataNightmare"
+                    }
+                  },
+                  "Property": "Nightmare"
+                }
+              },
+              "queryRef": "DataNightmare.Nightmare",
+              "nativeQueryRef": "Nightmare"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DataNightmare"
+                    }
+                  },
+                  "Property": "dataNightmare"
+                }
+              },
+              "queryRef": "DataNightmare.dataNightmare",
+              "nativeQueryRef": "dataNightmare"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Nightmare Respondents"
+                }
+              },
+              "queryRef": "_Measures.Nightmare Respondents",
+              "nativeQueryRef": "Nightmare Respondents"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Nightmare Rank"
+                }
+              },
+              "queryRef": "_Measures.Nightmare Rank",
+              "nativeQueryRef": "Nightmare Rank"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Nightmare Share"
+                }
+              },
+              "queryRef": "_Measures.Nightmare Share",
+              "nativeQueryRef": "Nightmare Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Respondents"
+                }
+              },
+              "queryRef": "_Measures.Respondents",
+              "nativeQueryRef": "Respondents"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "TT Nightmare Sentence"
+                }
+              },
+              "queryRef": "_Measures.TT Nightmare Sentence",
+              "nativeQueryRef": "TT Nightmare Sentence"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {}
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.0.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n \"$schema\": \"https://vega.github.io/schema/vega/v5.json\",\n \"description\": \"P28 C / V4 the data nightmare (8 answers, one each) and the sign-off; hover a bar for its card.\",\n \"width\": 1237,\n \"height\": 240,\n \"padding\": 0,\n \"autosize\": \"none\",\n \"signals\": [\n  {\n   \"name\": \"t0\",\n   \"init\": \"now()\"\n  },\n  {\n   \"name\": \"clock\",\n   \"init\": \"0\",\n   \"on\": [\n    {\n     \"events\": {\n      \"type\": \"timer\",\n      \"throttle\": 40\n     },\n     \"update\": \"min(now() - t0, 4600)\"\n    }\n   ]\n  },\n  {\n   \"name\": \"t\",\n   \"update\": \"min(1, clock / 4500)\"\n  },\n  {\n   \"name\": \"nmax\",\n   \"update\": \"length(data(''mx'')) ? max(1, data(''mx'')[0].m) : 1\"\n  },\n  {\n   \"name\": \"hovN\",\n   \"value\": null,\n   \"on\": [\n    {\n     \"events\": \"@bar:mouseover, @nlab:mouseover, @nval:mouseover\",\n     \"update\": \"datum\"\n    },\n    {\n     \"events\": \"@bar:mouseout, @nlab:mouseout, @nval:mouseout\",\n     \"update\": \"null\"\n    }\n   ]\n  }\n ],\n \"data\": [\n  {\n   \"name\": \"dataset\"\n  },\n  {\n   \"name\": \"short\",\n   \"values\": [\n    {\n     \"k\": \"It arrives a mess (missing values, duplicates, inconsistent formats)\",\n     \"s\": \"It arrives a mess\"\n    },\n    {\n     \"k\": \"It exists in too many versions (no clear source of truth)\",\n     \"s\": \"Too many versions\"\n    },\n    {\n     \"k\": \"It doesn’t add up (conflicting numbers and mysterious totals)\",\n     \"s\": \"It doesn’t add up\"\n    },\n    {\n     \"k\": \"It takes forever (painfully slow processing or queries)\",\n     \"s\": \"It takes forever\"\n    },\n    {\n     \"k\": \"It falls into the wrong hands (inappropriate access to sensitive data)\",\n     \"s\": \"Falls into the wrong hands\"\n    },\n    {\n     \"k\": \"The AI confidently gets it wrong (unreliable answers or predictions)\",\n     \"s\": \"The AI gets it wrong\"\n    },\n    {\n     \"k\": \"It never arrives (broken pipelines and failed refreshes)\",\n     \"s\": \"It never arrives\"\n    },\n    {\n     \"k\": \"We spot the problem too late (missed events and warnings)\",\n     \"s\": \"We spot it too late\"\n    }\n   ]\n  },\n  {\n   \"name\": \"rows\",\n   \"source\": \"dataset\",\n   \"transform\": [\n    {\n     \"type\": \"formula\",\n     \"as\": \"n\",\n     \"expr\": \"datum[''Nightmare Respondents''] || 0\"\n    },\n    {\n     \"type\": \"lookup\",\n     \"from\": \"short\",\n     \"key\": \"k\",\n     \"fields\": [\n      \"dataNightmare\"\n     ],\n     \"values\": [\n      \"s\"\n     ],\n     \"as\": [\n      \"s0\"\n     ]\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"lab\",\n     \"expr\": \"datum.s0 || datum.Nightmare\"\n    },\n    {\n     \"type\": \"window\",\n     \"sort\": {\n      \"field\": [\n       \"n\",\n       \"lab\"\n      ],\n      \"order\": [\n       \"descending\",\n       \"ascending\"\n      ]\n     },\n     \"ops\": [\n      \"row_number\"\n     ],\n     \"as\": [\n      \"r\"\n     ]\n    },\n    {\n     \"type\": \"formula\",\n     \"as\": \"y\",\n     \"expr\": \"58 + (datum.r - 0.5) * 22.5\"\n    }\n   ]\n  },\n  {\n   \"name\": \"mx\",\n   \"source\": \"rows\",\n   \"transform\": [\n    {\n     \"type\": \"aggregate\",\n     \"ops\": [\n      \"max\"\n     ],\n     \"fields\": [\n      \"n\"\n     ],\n     \"as\": [\n      \"m\"\n     ]\n    }\n   ]\n  }\n ],\n \"marks\": [\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 0\n     },\n     \"y\": {\n      \"value\": 28\n     },\n     \"text\": {\n      \"value\": \"THE DATA NIGHTMARE\"\n     },\n     \"fontSize\": {\n      \"value\": 22\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 300\n     },\n     \"y\": {\n      \"value\": 28\n     },\n     \"text\": {\n      \"value\": \"the data community’s own answer · one each · 105 people\"\n     },\n     \"fontSize\": {\n      \"value\": 17\n     },\n     \"fill\": {\n      \"value\": \"#5A5470\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 232\n     },\n     \"y\": {\n      \"signal\": \"datum.y + 6\"\n     },\n     \"text\": {\n      \"signal\": \"datum.lab\"\n     },\n     \"fontSize\": {\n      \"value\": 17\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"value\": 400\n     },\n     \"align\": {\n      \"value\": \"right\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN && hovN.lab !== datum.lab ? 0.4 : 1\"\n     }\n    }\n   },\n   \"name\": \"nlab\",\n   \"from\": {\n    \"data\": \"rows\"\n   }\n  },\n  {\n   \"type\": \"rect\",\n   \"name\": \"bar\",\n   \"from\": {\n    \"data\": \"rows\"\n   },\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 244\n     },\n     \"width\": {\n      \"signal\": \"datum.n / nmax * 360 * (1 - pow(1 - clamp(t * 1.5 - 0.3, 0, 1), 3))\"\n     },\n     \"y\": {\n      \"signal\": \"datum.y - 8\"\n     },\n     \"height\": {\n      \"value\": 16\n     },\n     \"cornerRadius\": {\n      \"value\": 2\n     },\n     \"fill\": {\n      \"signal\": \"datum.r === 1 ? ''#C8006E'' : ''#5B2DBF''\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN && hovN.lab !== datum.lab ? 0.35 : 1\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"signal\": \"244 + 8 + datum.n / nmax * 360 * (1 - pow(1 - clamp(t * 1.5 - 0.3, 0, 1), 3))\"\n     },\n     \"y\": {\n      \"signal\": \"datum.y + 6\"\n     },\n     \"text\": {\n      \"signal\": \"datum.n\"\n     },\n     \"fontSize\": {\n      \"value\": 17\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN && hovN.lab !== datum.lab ? 0.4 : 1\"\n     }\n    }\n   },\n   \"name\": \"nval\",\n   \"from\": {\n    \"data\": \"rows\"\n   }\n  },\n  {\n   \"type\": \"rule\",\n   \"name\": \"bg_divider\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 692\n     },\n     \"x2\": {\n      \"value\": 692\n     },\n     \"y\": {\n      \"value\": 52\n     },\n     \"y2\": {\n      \"value\": 232\n     },\n     \"stroke\": {\n      \"value\": \"#5B2DBF\"\n     },\n     \"strokeWidth\": {\n      \"value\": 2\n     },\n     \"opacity\": {\n      \"value\": 0.45\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 720\n     },\n     \"y\": {\n      \"value\": 86\n     },\n     \"text\": {\n      \"value\": \"We lit lanterns for the dark\"\n     },\n     \"fontSize\": {\n      \"value\": 25\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"fontStyle\": {\n      \"value\": \"italic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN ? 0 : 1\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 720\n     },\n     \"y\": {\n      \"value\": 118\n     },\n     \"text\": {\n      \"value\": \"and set a table for the dead.\"\n     },\n     \"fontSize\": {\n      \"value\": 25\n     },\n     \"fill\": {\n      \"value\": \"#1A1528\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"fontStyle\": {\n      \"value\": \"italic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN ? 0 : 1\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 720\n     },\n     \"y\": {\n      \"value\": 170\n     },\n     \"text\": {\n      \"value\": \"The future is still waiting\"\n     },\n     \"fontSize\": {\n      \"value\": 25\n     },\n     \"fill\": {\n      \"value\": \"#C8006E\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"fontStyle\": {\n      \"value\": \"italic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN ? 0 : 1\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"text\",\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 720\n     },\n     \"y\": {\n      \"value\": 202\n     },\n     \"text\": {\n      \"value\": \"for its festival.\"\n     },\n     \"fontSize\": {\n      \"value\": 25\n     },\n     \"fill\": {\n      \"value\": \"#C8006E\"\n     },\n     \"fontWeight\": {\n      \"value\": 700\n     },\n     \"align\": {\n      \"value\": \"left\"\n     },\n     \"font\": {\n      \"value\": \"Segoe UI\"\n     },\n     \"baseline\": {\n      \"value\": \"alphabetic\"\n     },\n     \"fontStyle\": {\n      \"value\": \"italic\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN ? 0 : 1\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"group\",\n   \"name\": \"card\",\n   \"interactive\": false,\n   \"encode\": {\n    \"update\": {\n     \"x\": {\n      \"value\": 712\n     },\n     \"y\": {\n      \"value\": 46\n     },\n     \"width\": {\n      \"value\": 520\n     },\n     \"height\": {\n      \"value\": 188\n     },\n     \"fill\": {\n      \"value\": \"#FFF9EC\"\n     },\n     \"stroke\": {\n      \"signal\": \"hovN && hovN.r === 1 ? ''#C8006E'' : ''#5B2DBF''\"\n     },\n     \"strokeWidth\": {\n      \"value\": 1.8\n     },\n     \"cornerRadius\": {\n      \"value\": 14\n     },\n     \"fillOpacity\": {\n      \"signal\": \"hovN ? 1 : 0\"\n     },\n     \"strokeOpacity\": {\n      \"signal\": \"hovN ? 1 : 0\"\n     },\n     \"opacity\": {\n      \"signal\": \"hovN ? 1 : 0\"\n     }\n    }\n   },\n   \"marks\": [\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 20\n       },\n       \"y\": {\n        \"value\": 28\n       },\n       \"text\": {\n        \"signal\": \"hovN ? ''THE DATA NIGHTMARE  ·  #'' + hovN.r + '' OF '' + length(data(''rows'')) : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 15\n       },\n       \"fill\": {\n        \"signal\": \"hovN && hovN.r === 1 ? ''#C8006E'' : ''#5B2DBF''\"\n       },\n       \"fontWeight\": {\n        \"value\": 700\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 20\n       },\n       \"y\": {\n        \"value\": 62\n       },\n       \"text\": {\n        \"signal\": \"indexof((hovN ? hovN.dataNightmare : ''''), '' ('') > 0 ? ''“'' + substring((hovN ? hovN.dataNightmare : ''''), 0, indexof((hovN ? hovN.dataNightmare : ''''), '' ('')) + ''”'' : (hovN ? hovN.dataNightmare : '''')\"\n       },\n       \"fontSize\": {\n        \"value\": 23\n       },\n       \"fill\": {\n        \"value\": \"#1A1528\"\n       },\n       \"fontWeight\": {\n        \"value\": 700\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"limit\": {\n        \"value\": 480\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 20\n       },\n       \"y\": {\n        \"value\": 88\n       },\n       \"text\": {\n        \"signal\": \"indexof((hovN ? hovN.dataNightmare : ''''), '' ('') > 0 ? substring((hovN ? hovN.dataNightmare : ''''), indexof((hovN ? hovN.dataNightmare : ''''), '' ('') + 2, length((hovN ? hovN.dataNightmare : '''')) - 1) : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 16\n       },\n       \"fill\": {\n        \"value\": \"#5A5470\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"fontStyle\": {\n        \"value\": \"italic\"\n       },\n       \"limit\": {\n        \"value\": 480\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 20\n       },\n       \"y\": {\n        \"value\": 138\n       },\n       \"text\": {\n        \"signal\": \"hovN ? format(hovN.n, '','') : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 40\n       },\n       \"fill\": {\n        \"signal\": \"hovN && hovN.r === 1 ? ''#C8006E'' : ''#5B2DBF''\"\n       },\n       \"fontWeight\": {\n        \"value\": 900\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Arial Black\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"signal\": \"20 + (hovN ? length(format(hovN.n, '','')) * 30 : 0) + 12\"\n       },\n       \"y\": {\n        \"value\": 136\n       },\n       \"text\": {\n        \"signal\": \"hovN ? ''of '' + (hovN.Respondents || 105) + '' people'' : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 18\n       },\n       \"fill\": {\n        \"value\": \"#1A1528\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 500\n       },\n       \"y\": {\n        \"value\": 138\n       },\n       \"text\": {\n        \"signal\": \"hovN ? format(hovN[''Nightmare Share''], ''.0%'') : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 30\n       },\n       \"fill\": {\n        \"value\": \"#1A1528\"\n       },\n       \"fontWeight\": {\n        \"value\": 900\n       },\n       \"align\": {\n        \"value\": \"right\"\n       },\n       \"font\": {\n        \"value\": \"Arial Black\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    },\n    {\n     \"type\": \"text\",\n     \"encode\": {\n      \"update\": {\n       \"x\": {\n        \"value\": 20\n       },\n       \"y\": {\n        \"value\": 172\n       },\n       \"text\": {\n        \"signal\": \"hovN && indexof(hovN[''TT Nightmare Sentence''] || '''', ''tools: '') >= 0 ? ''Top tools: '' + replace(split(hovN[''TT Nightmare Sentence''], ''tools: '')[1], /\\\\.$/, '''') : ''''\"\n       },\n       \"fontSize\": {\n        \"value\": 16\n       },\n       \"fill\": {\n        \"value\": \"#1A1528\"\n       },\n       \"fontWeight\": {\n        \"value\": 400\n       },\n       \"align\": {\n        \"value\": \"left\"\n       },\n       \"font\": {\n        \"value\": \"Segoe UI\"\n       },\n       \"baseline\": {\n        \"value\": \"alphabetic\"\n       },\n       \"limit\": {\n        \"value\": 480\n       },\n       \"opacity\": {\n        \"signal\": \"hovN ? 1 : 0\"\n       }\n      }\n     },\n     \"interactive\": false\n    }\n   ]\n  }\n ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.0'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'The data community''s own nightmare, one answer each: data arrives a mess (23 of 105), too many versions (19), doesn''t add up (17), takes forever (16), wrong hands (14), AI confidently wrong (8), never arrives (6), spotted too late (2). Closing line: we lit lanterns for the dark and set a table for the dead; the future is still waiting for its festival.'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

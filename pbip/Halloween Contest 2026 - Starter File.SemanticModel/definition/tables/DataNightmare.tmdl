@@ -1,0 +1,74 @@
+/// P28: one row per response - the data-community nightmare (single choice). Nightmare is a short label and RitualCaption a poster caption, both a lookup on the original wording, which dataNightmare keeps unchanged. An unmapped label fails the refresh.
+table DataNightmare
+	lineageTag: 8189c509-4a8a-5f5e-8200-1a82ece94300
+
+	column ResponseKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7ccd99a2-2cfb-53fa-b2b9-3977509eeb34
+		summarizeBy: none
+		sourceColumn: ResponseKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column dataNightmare
+		dataType: string
+		lineageTag: 9040cc5a-d660-5eb1-993b-ecce76950416
+		summarizeBy: none
+		sourceColumn: dataNightmare
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nightmare
+		dataType: string
+		lineageTag: 775217d1-e65d-5835-9716-0d587becfecf
+		summarizeBy: none
+		sourceColumn: Nightmare
+		sortByColumn: NightmareOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column RitualCaption
+		dataType: string
+		lineageTag: 00bcd64a-7a4c-5011-a027-20c0b6f1cc55
+		summarizeBy: none
+		sourceColumn: RitualCaption
+
+		annotation SummarizationSetBy = Automatic
+
+	column NightmareOrder
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 92ec9b75-1c79-5abe-8da5-b02a2f2fed81
+		summarizeBy: none
+		sourceColumn: NightmareOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DataNightmare = m
+		mode: import
+		source =
+				let
+				    Source = raw_survey_responses,
+				    Kept = Table.SelectColumns(Source, {"ResponseKey", "dataNightmare"}),
+				    Lookup = #table(type table [Full = text, Nightmare = text, RitualCaption = text, NightmareOrder = Int64.Type], {
+				        {"It arrives a mess (missing values, duplicates, inconsistent formats)", "It arrives a mess", "an altar set in a hurry", 1},
+				        {"It exists in too many versions (no clear source of truth)", "It exists in too many versions", "unclaimed ghosts, wandering", 2},
+				        {"It doesn’t add up (conflicting numbers and mysterious totals)", "It doesn't add up", "ghosts in the ledger", 3},
+				        {"It takes forever (painfully slow processing or queries)", "It takes forever", "the long wait at the gate", 4},
+				        {"It falls into the wrong hands (inappropriate access to sensitive data)", "It falls into the wrong hands", "an uninvited guest at the table", 5},
+				        {"The AI confidently gets it wrong (unreliable answers or predictions)", "The AI confidently gets it wrong", "a medium who answers anyway", 6},
+				        {"It never arrives (broken pipelines and failed refreshes)", "It never arrives", "the spirit no lantern guided home", 7},
+				        {"We spot the problem too late (missed events and warnings)", "We spot the problem too late", "the omen read after the fact", 8}
+				    }),
+				    Joined = Table.NestedJoin(Kept, {"dataNightmare"}, Lookup, {"Full"}, "L", JoinKind.LeftOuter),
+				    Expanded = Table.ExpandTableColumn(Joined, "L", {"Nightmare", "RitualCaption", "NightmareOrder"}),
+				    Checked = if List.Contains(Expanded[Nightmare], null) then error "Unmapped dataNightmare label" else Expanded,
+				    Typed = Table.TransformColumnTypes(Checked, {{"ResponseKey", Int64.Type}, {"dataNightmare", type text}, {"Nightmare", type text}, {"RitualCaption", type text}, {"NightmareOrder", Int64.Type}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+
